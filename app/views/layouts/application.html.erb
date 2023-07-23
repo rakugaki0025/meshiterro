@@ -1,16 +1,44 @@
-<!DOCTYPE html>
+<!DOCTYPE html> <!-- layouts ディレクトリ -->
+
 <html>
   <head>
     <title>Meshiterro</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
+    
   <body>
-    <%= yield %>
+    <header>
+      <% if user_signed_in? %>
+            <!-- devise側でのヘルパーメソッド -->
+            <!-- ログインしている時としてない時で表示を分けることが可能 -->
+            
+        <li>
+          <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+        </li>
+            <!-- ログアウトリンク HTTPメソッドがDELETE -->
+            
+      <% else %>
+        
+        <li>
+          <%= link_to "新規登録", new_user_registration_path %>
+        </li>
+            <!-- 新規登録リンク -->
+            
+        <li>
+          <%= link_to "ログイン", new_user_session_path %>
+        </li>
+            <!-- ログインリンク -->
+            
+      <% end %>
+    </header>
+      
+      
+      <%= yield %>
   </body>
 </html>
+
