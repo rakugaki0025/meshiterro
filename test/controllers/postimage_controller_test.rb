@@ -1,6 +1,6 @@
 require "test_helper"
 
-class WoodTest < ActiveSupport::TestCase
+class PostimageControllerTest < ActionDispatch::IntegrationTest
   # test "the truth" do
   #   assert true
   # end

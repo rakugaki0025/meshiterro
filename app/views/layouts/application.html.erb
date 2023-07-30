@@ -16,6 +16,11 @@
       <% if user_signed_in? %>
             <!-- devise側でのヘルパーメソッド -->
             <!-- ログインしている時としてない時で表示を分けることが可能 -->
+          
+        <li>
+          <%= link_to '投稿フォーム', new_post_image_path %>
+        </li>  
+            <!-- 投稿フォーム -->
             
         <li>
           <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>

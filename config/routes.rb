@@ -1,9 +1,14 @@
 Rails.application.routes.draw do
   
-  devise_for :users
-   #
   root to: "homes#top"
-   #
+   # ホーム
+  
+  devise_for :users
+   # ユーザーズ
+  
+  resources :post_images, only: [:new, :create, :index, :show]
+   # post_images ルーティング自動生成 onlyで(限定生成)
+   
   get 'homes/about' => "homes#about", as: 'about'
     # 取得 'アドレス' => "指定のコントローラー#アクション", as: "名前つきルート"
   
