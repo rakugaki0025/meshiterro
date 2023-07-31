@@ -1,6 +1,7 @@
 class PostImagesController < ApplicationController
    
    def new
+        # アクションを定義する
        @post_image = PostImage.new
         # インスタンス変数 = モデル名 空オブジェクト 新規作成
         # 左の箱に右を格納
