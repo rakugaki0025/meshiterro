@@ -5,8 +5,8 @@ class ApplicationController < ActionController::Base
        #
   def after_sign_in_path_for(resource)
         #メソッド サインイン後の遷移先設定
-      about_path
-        #遷移先 aboutページ
+      post_images_path
+        #遷移先 post_imagesページ
   end
 
   def after_sign_out_path_for(resource)

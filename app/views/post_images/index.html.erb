@@ -1,1 +1,29 @@
-<h1>index#Top</h1> <!-- post_images ディレクトリ -->
+<h1>投稿画像の一覧画面 index#Top</h1> <!-- post_images ディレクトリ -->
+  
+  <% @post_images.each do |post_image| %>
+      <!-- @post_images変数内から,post_image変数へ1つずつ格納します -->
+      
+    <div>
+      <%= image_tag post_image.get_image %>
+          <!-- image_tagを使い,post_image に ActiveStorageで設定したimageを表示しています。 -->
+          
+        <p>投稿ユーザー画像：<%= image_tag 'sample-author1.jpg' %></p>
+          <!-- 仮設定 -->
+        <p>ショップ名：<%= post_image.shop_name %></p>
+          <!-- ダウンロードした画像を使用 -->
+        <p>説明：<%= post_image.caption %></p>
+          <!-- caption(画像の説明)カラム表示 -->
+        <p>ユーザーネーム：<%= post_image.user.name %></p>
+          <!-- userモデルのnameカラム表示 -->
+        
+    </div>
+  <% end %>
+  
+  
+  
+  
+  
+  
+  
+  
+  

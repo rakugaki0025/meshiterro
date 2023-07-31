@@ -20,14 +20,15 @@ class PostImagesController < ApplicationController
        redirect_to post_images_path
         # 遷移先 投稿一覧画面
         
-   end
-      
-      
+   end 
+       
+       
    def index
-      
-   end
-      
-      
+       @post_images = PostImage.all
+        # インスタンス変数 = モデル名 空オブジェクト.全取得?
+   end 
+       
+       
    def show
        
    end
