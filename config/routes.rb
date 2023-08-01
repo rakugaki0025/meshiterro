@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   devise_for :users
    # ユーザーズ
   
-  resources :post_images, only: [:new, :create, :index, :show]
+  resources :post_images, only: [:new, :create, :index, :show, :destroy]
    # post_images ルーティング自動生成 onlyで(限定生成)
    
   get 'homes/about' => "homes#about", as: 'about'
