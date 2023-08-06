@@ -1,13 +1,30 @@
 class PostImage < ApplicationRecord # models
     
-  has_one_attached :image
-        #
+  
   belongs_to :user
         # ユーザーに属する 1:N の関係 [N]
+        
+  has_one_attached :image
+        # 
+        
   has_many :post_comments, dependent: :destroy
         # メソッド 1:N の関係性 [1] 削除後N全 (アソシエーション）
         # post_comments 1:N の関係 postImageモデル = PostCommentモデル
-   
+        
+  has_many :favorites, dependent: :destroy
+        # メソッド 1:N の関係性 [1] 削除後N全 (アソシエーション）
+        # favorites 1:N の関係 postImageモデル = PostCommentモデル
+  
+  def favorited_by?(user)
+        # 引数で渡されたユーザidがFavoritesテーブル内に存在（exists?）するか
+        # 存在していればtrue、存在していなければfalseを返す
+        
+      favorites.exists?(user_id: user.id)
+        # 
+        
+  end
+  
+  
   def get_image
         # ActiveStorageに格納したno_image画像(D)を表示する
     unless image.attached?
@@ -16,7 +33,7 @@ class PostImage < ApplicationRecord # models
       image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
         #
     end
-    image
+      image
         # 記述がないと目的を果たせない(画像)ger_image
   end
   

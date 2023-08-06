@@ -10,18 +10,21 @@ class User < ApplicationRecord
           # パスワードをリセット
           # ログイン情報を保存
           # emailのフォーマットなどのバリデーション
-         
+  
+  has_one_attached :profile_image
+          # profile_imageという名前でActiveStorageで
+          # プロフィール画像を保存できるように設定
+       
   has_many :post_images, dependent: :destroy
           # メソッド 1:N の関係性 [1] 削除後N全 (アソシエーション）
           # post_images 1:N の関係
   has_many :post_comments, dependent: :destroy
           # メソッド 1:N の関係性 [1] 削除後N全 (アソシエーション）
           # post_comments 1:N の関係 Userモデル = PostCommentモデル
+  has_many :favorites, dependent: :destroy
+          # メソッド 1:N の関係性 [1] 削除後N全 (アソシエーション）
+          # favorites 1:N の関係 Userモデル = PostCommentモデル
           
-  has_one_attached :profile_image
-        # profile_imageという名前でActiveStorageで
-        # プロフィール画像を保存できるように設定
-        
   def get_profile_image(width, height)
         # 取得_特定の名前(引数= 幅,高さ)
         # 特定の処理を名前で呼び出すことが可能
@@ -40,3 +43,4 @@ class User < ApplicationRecord
   end
  
 end
+
