@@ -23,6 +23,11 @@
             <!-- 投稿フォーム -->
             
         <li>
+          <%= link_to 'マイページ', user_path(current_user.id) %>
+        </li>
+            <!-- マイページ -->
+            
+        <li>
           <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
         </li>
             <!-- ログアウトリンク HTTPメソッドがDELETE -->
