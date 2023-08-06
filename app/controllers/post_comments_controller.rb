@@ -19,6 +19,18 @@ class PostCommentsController < ApplicationController
         # 遷移先 post_image(画像)に対して？
       
   end 
+  
+  def destroy
+        # 削除アクション
+        
+      PostComment.find(params[:id]).destroy
+        # コメント削除._find 探す:単数でどれか一つ
+        
+      redirect_to post_image_path(params[:post_image_id])
+        # 遷移先 post_images_showページ
+        
+  end
+  
       
       
   private

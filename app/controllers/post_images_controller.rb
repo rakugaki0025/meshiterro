@@ -8,23 +8,6 @@ class PostImagesController < ApplicationController
         # インスタンス名はなんでもいい,空のオブジェクトもなんでもいい
       
    end
-   
-   
-   def create
-        #投稿データの保存
-       @post_image = PostImage.new(post_image_params)
-        # shop_name, caption,image 格納予定
-        
-       @post_image.user_id = current_user.id
-        # ユーザーを ID で特定するために使用するカラム
-        
-       @post_image.save
-        # 記録保存
-        
-       redirect_to post_images_path
-        # 遷移先 投稿一覧画面
-        
-   end 
        
        
    def index
@@ -42,6 +25,23 @@ class PostImagesController < ApplicationController
         # インスタンス名はなんでもいい,空のオブジェクトもなんでもいい
         
    end
+   
+   
+   def create
+        #投稿データの保存
+       @post_image = PostImage.new(post_image_params)
+        # shop_name, caption,image 格納予定
+        
+       @post_image.user_id = current_user.id
+        # ユーザーを ID で特定するために使用するカラム
+        
+       @post_image.save
+        # 記録保存
+        
+       redirect_to post_images_path
+        # 遷移先 投稿一覧画面
+        
+   end 
    
    
    def destroy
