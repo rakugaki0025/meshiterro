@@ -8,7 +8,7 @@ Rails.application.routes.draw do
    # 取得 'アドレス' => "指定のコントローラー#アクション", as: "名前つきルート"
   resources :post_images, only: [:new, :create, :index, :show, :destroy]
    # post_images ルーティング自動生成 onlyで(限定生成)
-  resources :users, only: [:show, :edit]
+  resources :users, only: [:show, :edit, :update]
    # users ルーティング自動生成 onlyで(限定生成)
   
   # resources :woods

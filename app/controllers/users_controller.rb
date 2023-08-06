@@ -20,13 +20,15 @@ class UsersController < ApplicationController
     
     def update
       @user = User.find(params[:id])
-       # 
+       # インスタンス変数 = ユーザー_find 探す:単数でどれか一つ
+       # レコードを一つ取得？
        
-      @user.update
+      @user.update(user_params)
        # ユーザーのアップデート
-       
-      redirect_to ユーザーの詳細ページへのパス  
-       # 遷移先 '/books'? users_path(list.id)
+      
+      redirect_to user_path(@user.id)
+       # インスタンス変数 = ユーザー_find 探す:単数でどれか一つ  user_path(@user.id)
+       # 遷移先 '/books'? user_path(@user.id)
       
     end
 
@@ -34,8 +36,9 @@ class UsersController < ApplicationController
   private
 
     def user_params
-    params.require(:user).permit(:name, :profile_image)
-    
+       # 
+      params.require(:user).permit(:name, :profile_image)
+       # 
     end
     
 end

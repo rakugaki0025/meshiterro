@@ -1,7 +1,7 @@
 <h1>Users edit#top</h1> <!-- users_edit ディレクトリ -->
 
 <h2>プロフィール編集</h2>
-  <%= form_with model: @post_image do |f| %>
+  <%= form_with model: @user do |f| %>
     <label for="inputName">Name</label>
       <!-- -->
   <%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"名前"%>
