@@ -7,19 +7,27 @@
       <%= link_to post_image_path(post_image.id) do %>
           <!-- doからendの間が、aタグで囲まれた状態になる -->
           <!-- 画像にリンクが表示されている -->
+          
         <%= image_tag post_image.get_image %>
           <!-- image_tagを使い,post_image に ActiveStorageで設定したimageを表示しています。 -->
+          
       <% end %>
           
-        <p>投稿ユーザー画像：<%= image_tag 'sample-author1.jpg' %></p>
-          <!-- 仮設定 -->
+        <p>投稿ユーザー画像：<%= image_tag post_image.user.get_profile_image(100,100) %></p>
+          <!-- post_image.userで、投稿したユーザーの情報を取得できる -->
+          
         <p>ショップ名：<%= post_image.shop_name %></p>
           <!-- ダウンロードした画像を使用 -->
+          
         <p>説明：<%= post_image.caption %></p>
           <!-- caption(画像の説明)カラム表示 -->
+          
         <p>ユーザーネーム：<%= post_image.user.name %></p>
           <!-- userモデルのnameカラム表示 -->
-        
+          
+        <p><%= link_to "#{post_image.post_comments.count} コメント", post_image_path(post_image.id) %></p>
+          <!-- コメント件数を表示する -->
+          
     </div>
   <% end %>
   

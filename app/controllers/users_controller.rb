@@ -6,6 +6,7 @@ class UsersController < ApplicationController
          # インスタンス変数 = ユーザー_find 探す:単数でどれか一つ
         @post_images = @user.post_images   
          # メソッド 1:N の関係性 [1] (アソシエーション)
+         
     end
     
     

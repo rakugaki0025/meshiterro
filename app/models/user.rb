@@ -12,8 +12,12 @@ class User < ApplicationRecord
           # emailのフォーマットなどのバリデーション
          
   has_many :post_images, dependent: :destroy
-          #メソッド 1:N の関係性 [1] 削除後N全 (アソシエーション）
-  
+          # メソッド 1:N の関係性 [1] 削除後N全 (アソシエーション）
+          # post_images 1:N の関係
+  has_many :post_comments, dependent: :destroy
+          # メソッド 1:N の関係性 [1] 削除後N全 (アソシエーション）
+          # post_comments 1:N の関係 Userモデル = PostCommentモデル
+          
   has_one_attached :profile_image
         # profile_imageという名前でActiveStorageで
         # プロフィール画像を保存できるように設定

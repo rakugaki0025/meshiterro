@@ -1,24 +1,63 @@
 <h1>show#Top_post_images_show</h1> <!-- post_images_show ディレクトリ -->
 
-<div>
-  <%= image_tag @post_image.get_image %>
-    <!-- -->
-    <p>ショップ名：<%= @post_image.shop_name %></p>
+  <div>
+    <%= image_tag @post_image.get_image %>
       <!-- -->
-    <p>説明：<%= @post_image.caption %></p>
-      <!-- -->
-    <p>投稿ユーザー画像：<%= image_tag 'sample-author1.jpg' %></p>
-      <!-- -->
-    <p>ユーザーネーム：<%= @post_image.user.name %></p>
-      <!-- -->
-    <p>投稿日：<%= @post_image.created_at.strftime('%Y/%m/%d') %></p>
-      <!-- 投稿日付の形式を変換しているメソッド strftime(Y/m/d=%年,%月,%日) -->
-      
-  <% if @post_image.user == current_user %>
-      <!-- もし、投稿者 == 現在ログインしているユーザ だったら -->
-    <%= link_to "削除", post_image_path(@post_image), method: :delete %>
-      <!-- 削除リンク -->
-  <% end %>
     
-</div>
-
+      <p>ショップ名：<%= @post_image.shop_name %></p>
+        <!-- -->
+      
+      <p>説明：<%= @post_image.caption %></p>
+        <!-- -->
+      
+      <p>投稿ユーザー画像：<%= image_tag @post_image.user.get_profile_image(100,100) %></p>
+        <!-- .userがUserモデルのため get_profile_imageメソッドが使える -->
+      
+      <p>ユーザーネーム：<%= @post_image.user.name %></p>
+        <!-- -->
+      
+      <p>投稿日：<%= @post_image.created_at.strftime('%Y/%m/%d') %></p>
+        <!-- 投稿日付の形式を変換しているメソッド strftime(Y/m/d=%年,%月,%日) -->
+      
+    <% if @post_image.user == current_user %>
+      <!-- もし、投稿者 == 現在ログインしているユーザ だったら -->
+      <%= link_to "削除", post_image_path(@post_image), method: :delete %>
+      <!-- 削除リンク -->
+    <% end %>
+    
+  </div>
+  
+  
+  <div>
+      <p>コメント件数：<%= @post_image.post_comments.count %></p>
+        <!-- -->
+        
+    <% @post_image.post_comments.each do |post_comment| %>
+        <!-- -->
+        
+      <p><%= image_tag post_comment.user.get_profile_image(100,100) %></p>
+        <!-- -->
+        
+    <%= post_comment.user.name %>
+        <!-- -->
+        
+    <%= post_comment.created_at.strftime('%Y/%m/%d') %><%= post_comment.comment %>
+        <!-- -->
+        
+    <% end %>
+  </div>
+  
+  <div>
+    <%= form_with model: [@post_image, @post_comment] do |f| %>
+      <!-- インスタンス変数を二つ指定 -->
+      
+    <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
+      <!-- コメントバー -->
+      
+    <%= f.submit "送信する" %>
+      <!-- 送信ボタン -->
+      
+    <% end %>
+  </div>
+  
+  
