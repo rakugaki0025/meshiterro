@@ -11,8 +11,9 @@ class PostImagesController < ApplicationController
        
        
    def index
-       @post_images = PostImage.all
-        # インスタンス変数 = モデル名 空オブジェクト.全取得?
+       @post_images = PostImage.page(params[:page])
+        # インスタンス変数 = モデル名.ページ送り機能
+        
    end 
        
        

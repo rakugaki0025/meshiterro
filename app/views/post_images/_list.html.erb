@@ -1,6 +1,6 @@
 <h1>_list_部分テンプレート</h1>  <!-- post_images/_list.html.erb 部分テンプレート -->
 
-<!-- ここから -->
+
   <% post_images.each do |post_image| %>
       <!-- ローカル変数post_images変数内から,post_image変数へ1つずつ格納します -->
       
@@ -31,5 +31,7 @@
           
     </div>
   <% end %>
-<!-- ここまで -->  
+    
+  <%= paginate post_images %>
+    <!-- ページ送り機能 -->
 

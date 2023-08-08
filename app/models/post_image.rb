@@ -1,5 +1,5 @@
 class PostImage < ApplicationRecord # models
-    r_tm_c_v
+  
   
   belongs_to :user
         # ユーザーに属する 1:N の関係 [N]

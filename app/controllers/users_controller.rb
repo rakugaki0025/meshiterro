@@ -4,8 +4,10 @@ class UsersController < ApplicationController
          # アクションを定義する
         @user = User.find(params[:id])
          # インスタンス変数 = ユーザー_find 探す:単数でどれか一つ
-        @post_images = @user.post_images   
+         
+        @post_images = @user.post_images.page(params[:page])
          # メソッド 1:N の関係性 [1] (アソシエーション)
+         # .ページ送り機能
          
     end
     
