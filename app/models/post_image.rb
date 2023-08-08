@@ -1,5 +1,5 @@
 class PostImage < ApplicationRecord # models
-    
+    r_tm_c_v
   
   belongs_to :user
         # ユーザーに属する 1:N の関係 [N]
@@ -15,6 +15,14 @@ class PostImage < ApplicationRecord # models
         # メソッド 1:N の関係性 [1] 削除後N全 (アソシエーション）
         # favorites 1:N の関係 postImageモデル = PostCommentモデル
   
+  
+  validates :shop_name, presence: true
+        #shop_nameが存在しているかを確認するバリデーション
+        
+  validates :image, presence: true
+        #imageが存在しているかを確認するバリデーション
+  
+        
   def favorited_by?(user)
         # 引数で渡されたユーザidがFavoritesテーブル内に存在（exists?）するか
         # 存在していればtrue、存在していなければfalseを返す
@@ -34,7 +42,7 @@ class PostImage < ApplicationRecord # models
         #
     end
       image
-        # 記述がないと目的を果たせない(画像)ger_image
+        # 記述がないと目的を果たせない(画像)get_image依存
   end
   
   

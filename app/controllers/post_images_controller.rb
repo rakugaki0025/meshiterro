@@ -35,13 +35,20 @@ class PostImagesController < ApplicationController
        @post_image.user_id = current_user.id
         # ユーザーを ID で特定するために使用するカラム
         
-       @post_image.save
-        # 記録保存
-        
-       redirect_to post_images_path
-        # 遷移先 投稿一覧画面
-        
+     if @post_image.save
+          # 記録保存が成功すれば投稿一覧へ
+          
+        redirect_to post_images_path
+          # 遷移先 投稿一覧画面
+          
+     else
+        render :new
+          # 保存できなかった場合, :画像投稿フォーム再表示
+          
+     end
+     
    end 
+   
    
    
    def destroy

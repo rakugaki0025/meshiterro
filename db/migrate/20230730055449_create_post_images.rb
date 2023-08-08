@@ -1,4 +1,4 @@
-class CreatePostImages < ActiveRecord::Migration[6.1] # migrate
+class CreatePostImages < ActiveRecord::Migration[6.1] # migrate  
   def change
     create_table :post_images do |t|
        #         :テーブル名

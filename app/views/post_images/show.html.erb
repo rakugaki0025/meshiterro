@@ -20,10 +20,11 @@
           <!-- 投稿日付の形式を変換しているメソッド strftime(Y/m/d=%年,%月,%日) -->
       
       <% if @post_image.user == current_user %>
-        <!-- もし、投稿者 == 現在ログインしているユーザ だったら -->
+          <!-- もし、投稿者 == 現在ログインしているユーザ だったら -->
       
         <%= link_to "削除", post_image_path(@post_image), method: :delete %>
-        <!-- 削除リンク -->
+          <!-- 削除リンク -->
+          
       <% end %>
       
       
@@ -81,13 +82,13 @@
   
   <div>
     <%= form_with model: [@post_image, @post_comment] do |f| %>
-      <!-- インスタンス変数を二つ指定 -->
+          <!-- インスタンス変数を二つ指定 -->
       
     <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
-      <!-- コメントバー -->
+          <!-- コメントバー -->
       
     <%= f.submit "送信する" %>
-      <!-- 送信ボタン -->
+          <!-- 送信ボタン -->
       
     <% end %>
   </div>

@@ -1,11 +1,36 @@
 <h1>画像投稿フォーム_PostImages_new</h1> <!-- PostImages_new ディレクトリ -->
+  
+  
+  <% if @post_image.errors.any? %>
+      <!-- any?でエラー発生か判定 -->
+      
+    <%= @post_image.errors.count %>件のエラーが発生しました
+      <!-- 未入力件数を検出 -->
+      
+      <ul>
+        <% @post_image.errors.full_messages.each do |message| %>
+            <!--  -->
+          <li>
+            <%= message %>
+              <!--  -->
+          </li>
+            <!--  -->
+        <% end %>
+      </ul>
+  <% end %>
+  
+  
+  <%= form_with model: @post_image do |f| %>
+  
+    <h4>画像</h4>
+      <%= f.file_field :image, accept: "image/*" %>
+    
+    <h4>ショップ名</h4>
+      <%= f.text_field :shop_name %>
+    
+    <h4>説明</h4>
+      <%= f.text_area :caption %>
+      <%= f.submit '投稿' %>
+    
+  <% end %>
 
-<%= form_with model: @post_image do |f| %>
-  <h4>画像</h4>
-    <%= f.file_field :image, accept: "image/*" %>
-  <h4>ショップ名</h4>
-    <%= f.text_field :shop_name %>
-  <h4>説明</h4>
-    <%= f.text_area :caption %>
-    <%= f.submit '投稿' %>
-<% end %>

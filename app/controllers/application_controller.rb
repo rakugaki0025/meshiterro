@@ -1,20 +1,25 @@
 class ApplicationController < ActionController::Base
         # 全てのコントローラに対する処理を行える権限を持つ
        
+  before_action :authenticate_user!, except: [:top] 
+        # nonログイン状態,top以外にアクセス、ログイン画面へridirect設定
+       
   before_action :configure_permitted_parameters, if: :devise_controller?
-       #
+        # 
+        
   def after_sign_in_path_for(resource)
-        #メソッド サインイン後の遷移先設定
+        # メソッド サインイン後の遷移先設定
+        
       post_images_path
-        #遷移先 post_imagesページ
+        # 遷移先 post_imagesページ
   end
-
+  
   def after_sign_out_path_for(resource)
         #メソッド サインアウト後の遷移先設定
       about_path
         #遷移先 aboutページ
   end
-
+  
   protected
   
 
@@ -28,3 +33,4 @@ class ApplicationController < ActionController::Base
   end
   
 end
+
