@@ -30,6 +30,9 @@ class ApplicationController < ActionController::Base
         # メソッド ユーザー登録(sign_up)の際に、
         # ユーザー名(name)のデータ操作を許可
         # ストリングパラメータと同様の機能
+    devise_parameter_sanitizer.permit(:sign_in, keys: [:name])
+        # サインインできない時に追加
+        
   end
   
 end
